@@ -1,4 +1,4 @@
-Click==8.13
+Click==8.1.3
 Flask==2.2.2
 Flask-SQLAlchemy==2.3.2
 Jinja2==3.1.2
