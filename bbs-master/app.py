@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+import os
 app = Flask(__name__)
 
-db_uri = 'sqlite:///test.db'
+db_uri = os.environ.get('DATABASE_URL')
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 db = SQLAlchemy(app)
 class Article(db.Model):
