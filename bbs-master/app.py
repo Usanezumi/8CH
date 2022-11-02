@@ -1,14 +1,12 @@
 from flask import Flask, request, render_template
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-import psycopg2
+import os
 app = Flask(__name__)
-
 
 db_uri = os.environ.get('DATABASE_URL')
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 db = SQLAlchemy(app)
-
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     pub_date = db.Column(db.DateTime, nullable=False,
@@ -23,10 +21,9 @@ class Article(db.Model):
         self.article = article
         self.thread_id = thread_id
 
-
 class Thread(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    threadname = db.Column(db.String(80), unique=True)
+    threadname = db.Column(db.String(80))
     articles = db.relationship('Article', backref='thread', lazy=True)
 
     def __init__(self, threadname, articles=[]):
@@ -43,7 +40,6 @@ def main():
 def thread():
     thread_get = request.form["thread"]
     threads = Thread.query.all()
-    #articles = Article.query.all()
     thread_list = []
     threads = Thread.query.all()
     for th in threads:
@@ -76,4 +72,4 @@ def result():
     return render_template("bbs_result.html", article=article, name=name, now=date)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
