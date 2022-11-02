@@ -1,11 +1,9 @@
 from flask import Flask, request, render_template
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-import os
 app = Flask(__name__)
 
-#db_uri = "sqlite:///test.db"
-db_uri =  "postgresql://localhost/flasknote"
+db_uri = "sqlite:///test.db"
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 db = SQLAlchemy(app)
 
