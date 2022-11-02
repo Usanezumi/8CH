@@ -92,4 +92,4 @@ def result():
     return render_template("bbs_result.html", article=article, name=name, now=date)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(host="0.0.0.0", debug=False)
