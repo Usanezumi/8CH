@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "8chアクセス認証"
+AuthUserFile .htpasswd
+require valid-user
