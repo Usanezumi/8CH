@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "8chアクセス認証"
-AuthUserFile .htpasswd
+AuthUserFile "8CH/bbs-master/.htpasswd"
 require valid-user
