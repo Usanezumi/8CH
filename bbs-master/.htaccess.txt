@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "8chアクセス認証"
-AuthUserFile /home/b980.herokuapp.com/.htpasswd
-require valid-user
