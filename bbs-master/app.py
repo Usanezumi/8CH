@@ -4,7 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 app = Flask(__name__)
 
-db_uri = os.environ.get('DATABASE_URL')
+#db_uri = "sqlite:///test.db"
+db_uri = "postgresql-pointy-59706"
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 db = SQLAlchemy(app)
 
@@ -91,4 +92,4 @@ def result():
     return render_template("bbs_result.html", article=article, name=name, now=date)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=False)
+    app.run(debug=False)
